@@ -4,17 +4,16 @@ addEventListener('fetch', event => {
 
 async function handleRequest(request) {
   const url = new URL(request.url)
-  const path = url.pathname.substring(1).toLowerCase() // Get the path and convert to lowercase
+  const path = url.pathname.substring(1).toLowerCase()
   const params = url.searchParams
 
-  // Get the 'limit' and 'country' query parameters
-  let limit = params.get('limit') ? parseInt(params.get('limit')) : 1
-  limit = limit > 20 ? 20 : limit // Cap the limit at 20
-  const countryList = params.get('country') ? params.get('country').split(',') : ['Canada', 'United States']
+  let limit = params.get('limit') ? parseInt(params.get('limit')) : 5
+  limit = limit > 40 ? 40 : limit // limit at 40
+  const countryList = params.get('country') ? params.get('country').split(',') : ['Canada', 'United States', 'United Kingdom']
 
   const filteredCities = []
 
-  // Fetch cities data for each country
+  // Fetch cities data for each country //
   for (const country of countryList) {
     const apiResponse = await fetch('https://countriesnow.space/api/v0.1/countries/cities', {
       method: 'POST',
@@ -25,7 +24,7 @@ async function handleRequest(request) {
     })
     const data = await apiResponse.json()
 
-    // Filter cities by starting letters
+    // Filter by starting letters //
     if (data.error === false && data.data && data.data.length > 0) {
       for (const city of data.data) {
         if (city.toLowerCase().startsWith(path)) {
@@ -35,7 +34,7 @@ async function handleRequest(request) {
     }
   }
 
-  // Randomly select cities from the filtered list up to the specified limit
+  // Randomly select cities //
   const responseCities = []
   while (responseCities.length < limit && filteredCities.length > 0) {
     const randomIndex = Math.floor(Math.random() * filteredCities.length)

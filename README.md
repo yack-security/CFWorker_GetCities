@@ -7,13 +7,13 @@ This Cloudflare Worker fetches city data from the [Countries Now](https://countr
 - Fetches city data for specified countries.
 - Filters cities based on the URL path prefix.
 - Supports query parameters to limit the number of cities and specify the countries.
-- Randomly selects cities up to a specified limit, max is 20.
+- Randomly selects cities up to a specified limit, max is 40.
 
 ## Usage
 
 ### Endpoint
 
-By default, it will return a random city from Canada and the United States.
+By default, it will return 5 random cities from Canada, United States and United Kingdom.
 
 - [https://cities.yack.one](https://cities.yack.one)
 
@@ -25,37 +25,37 @@ You can specify the city prefix in the URL path to filter cities by name.
 ```bash
 curl -s https://cities.yack.one/<city-prefix>
 
-# Example: get a city starting with "mon"
+# Example: cities starting with "mon"
 curl -s https://cities.yack.one/mon
 ```
 
 ### Query Parameters
 
-- `limit` (optional): Maximum number of cities to return. Default is 1, and the maximum is 20.
-- `country` (optional): Comma-separated list of countries to filter cities by. Default is `Canada,United States`.
+- `limit` (optional): Maximum number of cities to return. Default is 5, and the maximum is 40.
+- `country` (optional): Comma-separated list of countries to filter cities by. Default is `Canada,United States,United Kingdom`.
 
 ### Examples
 
-1. **Get a single city starting with "ci" from Canada and United States:**
+1. **Get a single city starting with "ci" from Canada, United States and United Kingdom:**
 
-- `https://cities.yack.one/ci`
+- `https://cities.yack.one/ci?limit=1`
 
 ```bash
-curl -s https://cities.yack.one/ci
+curl -s https://cities.yack.one/ci?limit=1
 ```
 
-2. **Get up to 5 cities starting with "to" from Japan:**
+2. **Get up to 15 cities starting with "to" from Japan:**
 
-- `https://cities.yack.one/to?limit=5&country=Japan`
+- `https://cities.yack.one/to?limit=15&country=Japan`
 
 ```bash
-curl -s https://cities.yack.one/to?limit=5&country=Japan
+curl -s https://cities.yack.one/to?limit=15&country=Japan
 ```
 
-3. **Get up to 3 cities starting with "ne" from Canada and Mexico:**
+3. **Get up to 10 cities starting with "ne" from Canada and Mexico:**
 
-- `https://cities.yack.one/ne?limit=3&country=Canada,Mexico`
+- `https://cities.yack.one/ne?limit=10&country=Canada,Mexico`
 
 ```bash
-curl -s https://cities.yack.one/ne?limit=3&country=Canada,Mexico
+curl -s https://cities.yack.one/ne?limit=10&country=Canada,Mexico
 ```
