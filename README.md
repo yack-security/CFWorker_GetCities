@@ -13,13 +13,14 @@ This Cloudflare Worker fetches city data from the [Countries Now](https://countr
 
 ### Endpoint
 
-By default, it will return a random city from Canada and the USA.
+By default, it will return a random city from Canada and the United States.
 
 - [https://cities.yack.one](https://cities.yack.one)
 
 You can specify the city prefix in the URL path to filter cities by name.
 
 - `https://cities.yack.one/<city-prefix>`
+- `https://cities.yack.one/mon`
 
 ```bash
 curl -s https://cities.yack.one/<city-prefix>
@@ -31,11 +32,11 @@ curl -s https://cities.yack.one/mon
 ### Query Parameters
 
 - `limit` (optional): Maximum number of cities to return. Default is 1, and the maximum is 20.
-- `country` (optional): Comma-separated list of countries to filter cities by. Default is `Canada,USA`.
+- `country` (optional): Comma-separated list of countries to filter cities by. Default is `Canada,United States`.
 
 ### Examples
 
-1. **Get a single city starting with "ci" from Canada and USA:**
+1. **Get a single city starting with "ci" from Canada and United States:**
 
 - `https://cities.yack.one/ci`
 
