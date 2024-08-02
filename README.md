@@ -13,7 +13,7 @@ This Cloudflare Worker fetches city data from the [Countries Now](https://countr
 
 ### Endpoint
 
-By default, it will return 5 random cities from Canada, United States and United Kingdom.
+By default, it will return 5 random cities from Canada, United States, United Kingdom and France.
 
 - [https://cities.yack.one](https://cities.yack.one)
 
@@ -32,11 +32,11 @@ curl -s https://cities.yack.one/mon
 ### Query Parameters
 
 - `limit` (optional): Maximum number of cities to return. Default is 5, and the maximum is 40.
-- `country` (optional): Comma-separated list of countries to filter cities by. Default is `Canada,United States,United Kingdom`.
+- `country` (optional): Comma-separated list of countries to filter cities by. Default is `Canada,United States,United Kingdom,France`.
 
 ### Examples
 
-1. **Get a single city starting with "ci" from Canada, United States and United Kingdom:**
+1. **Get a single city starting with "ci" from Canada, United States, United Kingdom and France:**
 
 - `https://cities.yack.one/ci?limit=1`
 

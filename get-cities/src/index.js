@@ -9,7 +9,7 @@ async function handleRequest(request) {
 
   let limit = params.get('limit') ? parseInt(params.get('limit')) : 5
   limit = limit > 40 ? 40 : limit // limit at 40
-  const countryList = params.get('country') ? params.get('country').split(',') : ['Canada', 'United States', 'United Kingdom']
+  const countryList = params.get('country') ? params.get('country').split(',') : ['Canada', 'United States', 'United Kingdom', 'France']
 
   const filteredCities = []
 
